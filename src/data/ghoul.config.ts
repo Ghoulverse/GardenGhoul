@@ -95,7 +95,7 @@ export const config: GhoulConfig = {
       icon: "🧘",
       color: "#a855f7",
       realm: "The Tranquil Gardens",
-      live: false,
+      live: true,
     },
     {
       id: "party",
@@ -104,7 +104,7 @@ export const config: GhoulConfig = {
       icon: "🎉",
       color: "#ff00ff",
       realm: "The Neon District",
-      live: false,
+      live: true,
     },
     {
       id: "tradie",
@@ -113,7 +113,7 @@ export const config: GhoulConfig = {
       icon: "🔧",
       color: "#eab308",
       realm: "The Industrial Wastes",
-      live: false,
+      live: true,
     },
     {
       id: "garden",
@@ -131,7 +131,7 @@ export const config: GhoulConfig = {
       icon: "💄",
       color: "#ec4899",
       realm: "The Glamour Dimension",
-      live: false,
+      live: true,
     },
     {
       id: "scholar",
