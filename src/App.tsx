@@ -1,18 +1,18 @@
-import GhostMascot from '@/components/GhostMascot';
-import AmbientParticles from '@/components/AmbientParticles';
+import GardenMascot from '@/components/GardenMascot';
+import GardenParticles from '@/components/GardenParticles';
 import Home from '@/pages/Home';
 
 export default function App() {
   return (
     <>
-      {/* Noise texture overlay */}
-      <div className="noise-overlay" />
+      {/* Organic texture overlay */}
+      <div className="organic-overlay" />
 
-      {/* Ambient floating particles */}
-      <AmbientParticles />
+      {/* Ambient garden particles (leaves, pollen, seeds, petals) */}
+      <GardenParticles />
 
-      {/* The interactive ghost mascot */}
-      <GhostMascot />
+      {/* The interactive garden mascot */}
+      <GardenMascot />
 
       {/* Page content */}
       <Home />
