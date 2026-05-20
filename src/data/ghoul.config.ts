@@ -1,8 +1,5 @@
 /**
  * Ghoul Site Configuration
- * 
- * This is the single source of truth for each ghoul's brand site.
- * When creating a new ghoul site, copy the template and update this file.
  */
 
 export interface CrossLink {
@@ -17,49 +14,46 @@ export interface CrossLink {
 
 export interface Product {
   name: string;
-  description?: string;
-  comingSoon?: boolean;
+  tagline: string;
+  description: string;
+  category: 'core' | 'pro' | 'tool' | 'refill' | 'limited';
+  volume: string;
+  price: string;
+  features: string[];
+  heroIngredient?: string;
 }
 
 export interface GhoulConfig {
-  /** Unique ID: goo, beauty, garden, zen, party, tradie, baby, scholar */
   id: string;
-  /** Display name: "GOO GHOUL", "BEAUTY GHOUL" */
   name: string;
-  /** Short tagline for hero */
   tagline: string;
-  /** One-line description */
   description: string;
-  /** Full domain with protocol: "https://www.googhoul.com" */
   domain: string;
-  /** Emoji icon */
   icon: string;
-  /** Is this the leader (GOO GHOUL)? */
   isLeader: boolean;
-  /** Product catalog */
   products: Product[];
-  /** Cross-links to all ghoul sites + GHOULVERSE */
   crossLinks: CrossLink[];
-  /** CTA section text */
   cta: {
     headline: string;
     subheadline: string;
     buttonText: string;
     placeholderText: string;
   };
-  /** Game link (most ghouls link to the shared GOO RUNNER) */
   gameUrl: string;
-  /** Social links */
   social: {
     twitter?: string;
     instagram?: string;
     youtube?: string;
   };
+  science: {
+    title: string;
+    subtitle: string;
+    description: string;
+    adaptation: string;
+    stats: { label: string; value: string }[];
+  };
 }
 
-// ─────────────────────────────────────────────
-// GARDEN GHOUL
-// ─────────────────────────────────────────────
 export const config: GhoulConfig = {
   id: "garden",
   name: "GARDEN GHOUL",
@@ -71,11 +65,94 @@ export const config: GhoulConfig = {
   isLeader: false,
 
   products: [
-    { name: "Organic Pesticide", comingSoon: true },
-    { name: "Plant Rehydration Spray", comingSoon: true },
-    { name: "Soil pH Balancer", comingSoon: true },
-    { name: "Compost Accelerator", comingSoon: true },
-    { name: "Garden Tool Sanitizer", comingSoon: true },
+    {
+      name: "Organic Pesticide",
+      tagline: "Nature's defence, not nature's enemy",
+      description: "Botanical insecticide derived from chrysanthemum extract and neem oil. Targets aphids, mites, and caterpillars without harming pollinators.",
+      category: "core",
+      volume: "1L Spray",
+      price: "$24.99 AUD",
+      features: ["Bee-safe formula", "Rain-resistant 48hrs", "Organic certified"],
+      heroIngredient: "Organic Ectoplasm™",
+    },
+    {
+      name: "Plant Rehydration Spray",
+      tagline: "Revive the wilted in 24 hours",
+      description: "Emergency hydration mist for stressed, drought-damaged, or transplanted plants. Contains humectants that bind moisture to leaf and root tissue.",
+      category: "core",
+      volume: "750ml",
+      price: "$19.99 AUD",
+      features: ["Root & leaf dual action", "Humectant complex", "Indoor & outdoor"],
+      heroIngredient: "Organic Ectoplasm™",
+    },
+    {
+      name: "Soil pH Balancer",
+      tagline: "The right chemistry for growth",
+      description: "Gradual-release granules that correct acidic or alkaline soil over 14 days. Contains trace minerals to replenish depleted beds.",
+      category: "core",
+      volume: "500g",
+      price: "$22.99 AUD",
+      features: ["14-day gradual release", "Trace mineral boost", "Safe for edibles"],
+      heroIngredient: "Organic Ectoplasm™",
+    },
+    {
+      name: "Compost Accelerator",
+      tagline: "Turn waste to black gold in half the time",
+      description: "Concentrated microbial inoculant for compost bins and tumblers. Speeds decomposition of green and brown matter while eliminating odours.",
+      category: "pro",
+      volume: "1kg",
+      price: "$34.99 AUD",
+      features: ["2x faster breakdown", "Odour neutralising", "Worm-safe"],
+      heroIngredient: "Organic Ectoplasm™",
+    },
+    {
+      name: "Garden Tool Sanitizer",
+      tagline: "Clean tools, healthy plants",
+      description: "Prevents cross-contamination between plants by sanitising shears, trowels, and pots. Kills fungal spores and bacterial blight.",
+      category: "pro",
+      volume: "500ml",
+      price: "$18.99 AUD",
+      features: ["Fungal spore kill", "Non-corrosive on metal", "Ready-to-use"],
+      heroIngredient: "Organic Ectoplasm™",
+    },
+    {
+      name: "Precision Sprayer Wand",
+      tagline: "Targeted application, zero waste",
+      description: "Adjustable-pressure wand with 3 spray patterns. Attaches to standard Garden Ghoul bottles for precise, drift-free application.",
+      category: "tool",
+      volume: "Tool",
+      price: "$29.99 AUD",
+      features: ["3 spray patterns", "Universal bottle fit", "Extendable reach"],
+    },
+    {
+      name: "The Garden Tote",
+      tagline: "Everything the ghoul needs",
+      description: "Heavy-duty canvas carry-all with waterproof base, tool loops, and padded shoulder strap. Holds a full product loadout.",
+      category: "tool",
+      volume: "Bag",
+      price: "$44.99 AUD",
+      features: ["Waterproof base", "12 tool loops", "Padded strap"],
+    },
+    {
+      name: "Organic Pesticide Refill",
+      tagline: "Same strength, less waste",
+      description: "Bulk 2L refill pouch for the Organic Pesticide spray system. Reduces plastic use by 70% versus buying new bottles.",
+      category: "refill",
+      volume: "2L Pouch",
+      price: "$39.99 AUD",
+      features: ["70% less plastic", "Spout-fill design", "Same concentration"],
+      heroIngredient: "Organic Ectoplasm™",
+    },
+    {
+      name: "Spring Bloom Booster",
+      tagline: "Limited spring release",
+      description: "A seasonal formulation rich in phosphorus and potassium for explosive spring flowering. Available March through May only.",
+      category: "limited",
+      volume: "1L",
+      price: "$27.99 AUD",
+      features: ["High P-K ratio", "Seasonal only", "Flower-specific"],
+      heroIngredient: "Organic Ectoplasm™",
+    },
   ],
 
   crossLinks: [
@@ -154,9 +231,9 @@ export const config: GhoulConfig = {
   ],
 
   cta: {
-    headline: "Ready to Grow?",
-    subheadline: "Join the green revolution. Be the first to know when we drop.",
-    buttonText: "Plant the Seed",
+    headline: "Investor Inquiries",
+    subheadline: "Join the GHOULVERSE portfolio. Request the full product deck and financial projections.",
+    buttonText: "Request Deck",
     placeholderText: "Enter your email...",
   },
 
@@ -166,5 +243,18 @@ export const config: GhoulConfig = {
     twitter: "#",
     instagram: "#",
     youtube: "#",
+  },
+
+  science: {
+    title: "The Science",
+    subtitle: "Organic Ectoplasm™",
+    description: "Every GARDEN GHOUL product is powered by Organic Ectoplasm™ — a proprietary bio-enzyme complex derived from beneficial soil microbiota. This technology accelerates natural processes without introducing synthetic chemicals into the ecosystem.",
+    adaptation: "For the Verdant Wilds, we cultivated a soil-native variant that works in harmony with mycorrhizal networks and beneficial bacteria — strengthening the garden's natural defence system while eliminating threats.",
+    stats: [
+      { label: "Organic Certification", value: "ACO" },
+      { label: "Pollinator Safety", value: "100%" },
+      { label: "Biodegradation", value: "28 days" },
+      { label: "Soil Health Improvement", value: "+34%" },
+    ],
   },
 };
