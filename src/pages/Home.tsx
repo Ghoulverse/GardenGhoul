@@ -4,8 +4,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   Twitter, Instagram, Youtube, ArrowRight, Gamepad2,
   Ghost, ExternalLink, Flower2, Sprout, TreePine, Sun,
+  Briefcase, Building2,
 } from 'lucide-react';
 import { config } from '@/data/ghoul.config';
+import GardenMascot from '@/components/GardenMascot';
+import GardenParticles from '@/components/GardenParticles';
+import EcosystemMap from '@/components/EcosystemMap';
+import MarketStats from '@/components/MarketStats';
+import IPBadge from '@/components/IPBadge';
+import RoadmapTimeline from '@/components/RoadmapTimeline';
+import InvestorCTA from '@/components/InvestorCTA';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,6 +46,10 @@ export default function Home() {
   const gameRef = useRef<HTMLDivElement>(null);
   const portfolioRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const ecosystemRef = useRef<HTMLDivElement>(null);
+  const marketRef = useRef<HTMLDivElement>(null);
+  const ipRef = useRef<HTMLDivElement>(null);
+  const roadmapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -72,7 +84,7 @@ export default function Home() {
       });
 
       // Scroll reveals with gentle ease
-      [wildRef, scienceRef, productRef, groveRef, gameRef, portfolioRef, ctaRef].forEach((ref) => {
+      [wildRef, scienceRef, productRef, groveRef, gameRef, portfolioRef, ctaRef, ecosystemRef, marketRef, ipRef, roadmapRef].forEach((ref) => {
         if (ref.current) {
           gsap.from(ref.current.querySelectorAll('.reveal'), {
             y: 40,
@@ -101,6 +113,8 @@ export default function Home() {
       <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.015]"
         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")` }} />
 
+      <GardenParticles />
+
       {/* ===== NAV ===== */}
       <nav className="fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-10"
         style={{ background: 'rgba(254,252,232,0.9)', backdropFilter: 'blur(12px)', borderBottom: '1px dashed rgba(34,197,94,0.15)' }}>
@@ -111,6 +125,9 @@ export default function Home() {
             </div>
             <span className="font-mono text-sm tracking-[0.2em] uppercase text-[#22c55e]">{config.name}</span>
           </div>
+          <a href="#ecosystem" className="hidden md:flex items-center gap-1.5 text-[10px] font-bold tracking-[0.2em] uppercase text-[#94a3b8] hover:text-[#22c55e] transition-colors">
+            <Briefcase className="w-3 h-3" /> Investors
+          </a>
           <a href={GHOULVERSE_LINK?.domain || '#'} target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase text-[#78716c] hover:text-[#16a34a] transition-colors">
             GHOULVERSE <ExternalLink className="w-3 h-3" />
@@ -122,7 +139,11 @@ export default function Home() {
       <section ref={heroRef} className="relative min-h-[100dvh] flex items-center px-6 md:px-10">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-24">
           <div className="relative z-10">
-            <div className="hero-grow mb-6">
+            <div className="hero-grow mb-6 flex flex-wrap items-center gap-3">
+              <a href="https://www.ghoulverse.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 text-[10px] font-bold tracking-[0.4em] uppercase border-2 border-[#f59e0b]/40 text-[#f59e0b] hover:border-[#f59e0b] hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-all">
+                <Building2 className="w-3 h-3" />
+                House of GHOUL
+              </a>
               <span className="inline-block text-[10px] font-bold tracking-[0.3em] uppercase text-[#22c55e] px-3 py-1.5 border-2 border-dashed border-[#22c55e]/30">
                 The Verdant Wilds
               </span>
@@ -158,7 +179,7 @@ export default function Home() {
                   }} />
               ))}
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-[10rem] opacity-[0.08]">{config.icon}</span>
+                <GardenMascot />
               </div>
             </div>
           </div>
@@ -178,11 +199,12 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
               { icon: Flower2, value: '∞', label: 'Seeds Planted', color: '#22c55e' },
               { icon: Sprout, value: '0', label: 'Weeds Survived', color: '#16a34a' },
               { icon: TreePine, value: '100%', label: 'Growth Rate', color: '#84cc16' },
+              { icon: Building2, value: '6', label: 'HOUSE OF GHOUL', color: '#f59e0b' },
             ].map((stat, i) => (
               <div key={i} className="reveal group relative p-8 border-2 border-dashed transition-all duration-500 hover:-translate-y-1"
                 style={{ borderColor: `${stat.color}25`, background: 'rgba(255,255,240,0.6)' }}
@@ -196,6 +218,20 @@ export default function Home() {
                 <div className="text-[#78716c] text-xs tracking-wider uppercase">{stat.label}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== ECOSYSTEM ===== */}
+      <section ref={ecosystemRef} id="ecosystem" className="relative py-28 md:py-40 px-6 md:px-10" style={{ borderTop: '2px dashed rgba(34,197,94,0.1)' }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="reveal mb-12 text-center">
+            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#22c55e] mb-4 block">Ecosystem</span>
+            <h2 className="font-mono text-4xl md:text-5xl text-[#292524] mb-3">The GHOULVERSE Map</h2>
+            <p className="text-[#78716c] max-w-md mx-auto">Eight realms. One universe. Explore the full ecosystem.</p>
+          </div>
+          <div className="reveal">
+            <EcosystemMap />
           </div>
         </div>
       </section>
@@ -229,6 +265,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== IP ===== */}
+      <section ref={ipRef} className="relative py-28 md:py-40 px-6 md:px-10" style={{ borderTop: '2px dashed rgba(34,197,94,0.1)' }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="reveal mb-12 text-center">
+            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#22c55e] mb-4 block">Intellectual Property</span>
+            <h2 className="font-mono text-4xl md:text-5xl text-[#292524] mb-3">Protected Assets</h2>
+            <p className="text-[#78716c] max-w-md mx-auto">Trademarked, defended, and growing in value.</p>
+          </div>
+          <div className="reveal">
+            <IPBadge />
+          </div>
+        </div>
+      </section>
+
       {/* ===== PRODUCTS ===== */}
       <section ref={productRef} id="greenhouse" className="relative py-28 md:py-40 px-6 md:px-10">
         <div className="max-w-7xl mx-auto">
@@ -245,7 +295,7 @@ export default function Home() {
               const count = config.products.filter((p) => p.category === tab.key).length;
               return (
                 <button key={tab.key} onClick={() => setActiveTab(tab.key)}
-                  className="px-5 py-2 text-xs font-bold tracking-wider uppercase transition-all border-2 border-dashed"
+                  className="px-5 py-2 text-xs font-bold tracking-wider uppercase transition-all border-2 border-dashed min-h-11"
                   style={{
                     background: isActive ? 'linear-gradient(135deg, #22c55e, #16a34a)' : 'rgba(255,255,240,0.6)',
                     color: isActive ? '#fff' : '#78716c',
@@ -288,7 +338,7 @@ export default function Home() {
                     </span>
                   </div>
 
-                  <h3 className="font-mono text-base text-[#292524] mb-1 uppercase tracking-wide">{product.name}</h3>
+                  <h3 className="font-mono text-base text-[#292524] mb-1 uppercase tracking-wide break-words">{product.name}</h3>
                   <p className="text-[#22c55e] text-xs font-bold mb-3">{product.tagline}</p>
                   <p className="text-[#78716c] text-xs leading-relaxed mb-4">{product.description}</p>
 
@@ -312,6 +362,34 @@ export default function Home() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== MARKET ===== */}
+      <section ref={marketRef} className="relative py-28 md:py-40 px-6 md:px-10" style={{ borderTop: '2px dashed rgba(34,197,94,0.1)' }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="reveal mb-12 text-center">
+            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#22c55e] mb-4 block">Market Intelligence</span>
+            <h2 className="font-mono text-4xl md:text-5xl text-[#292524] mb-3">By The Numbers</h2>
+            <p className="text-[#78716c] max-w-md mx-auto">Data-driven insights across the House of GHOUL.</p>
+          </div>
+          <div className="reveal">
+            <MarketStats />
+          </div>
+        </div>
+      </section>
+
+      {/* ===== ROADMAP ===== */}
+      <section ref={roadmapRef} className="relative py-28 md:py-40 px-6 md:px-10" style={{ borderTop: '2px dashed rgba(34,197,94,0.1)' }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="reveal mb-12 text-center">
+            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#22c55e] mb-4 block">Roadmap</span>
+            <h2 className="font-mono text-4xl md:text-5xl text-[#292524] mb-3">Where We're Growing</h2>
+            <p className="text-[#78716c] max-w-md mx-auto">From seedling to canopy — our journey ahead.</p>
+          </div>
+          <div className="reveal">
+            <RoadmapTimeline />
           </div>
         </div>
       </section>
@@ -399,11 +477,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== INVESTOR CTA ===== */}
+      <section className="relative py-28 md:py-40 px-6 md:px-10" style={{ borderTop: '2px dashed rgba(34,197,94,0.1)' }}>
+        <div className="max-w-5xl mx-auto">
+          <InvestorCTA />
+        </div>
+      </section>
+
       {/* ===== CTA / FOOTER ===== */}
       <section ref={ctaRef} className="relative py-28 md:py-40 px-6 md:px-10">
         <div className="max-w-2xl mx-auto text-center">
           <div className="reveal mb-10">
-            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#22c55e] mb-4 block">Investor Relations</span>
+            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#22c55e] mb-4 block">Stay in the Loop</span>
             <h2 className="font-mono text-4xl md:text-5xl text-[#292524] mb-4">{config.cta.headline}</h2>
             <p className="text-[#78716c]">{config.cta.subheadline}</p>
           </div>
@@ -434,13 +519,18 @@ export default function Home() {
 
           <div className="reveal mb-8 flex items-center justify-center gap-4 text-xs font-mono">
             <a href={GHOULVERSE_LINK?.domain || '#'} target="_blank" rel="noopener noreferrer"
-              className="text-[#78716c] hover:text-[#22c55e] transition-colors flex items-center gap-1">
+              className="text-[#78716c] hover:text-[#22c55e] transition-colors flex items-center gap-1 py-2 px-3 min-h-11">
               <Ghost className="w-3 h-3" /> Explore GHOULVERSE
             </a>
             <span className="text-[#78716c]/20">|</span>
             <a href={config.gameUrl} target="_blank" rel="noopener noreferrer"
-              className="text-[#78716c] hover:text-[#16a34a] transition-colors flex items-center gap-1">
+              className="text-[#78716c] hover:text-[#16a34a] transition-colors flex items-center gap-1 py-2 px-3 min-h-11">
               <Gamepad2 className="w-3 h-3" /> Play GHOULVERSE
+            </a>
+            <span className="text-[#78716c]/20">|</span>
+            <a href="#ecosystem"
+              className="text-[#78716c] hover:text-[#f59e0b] transition-colors flex items-center gap-1 py-2 px-3 min-h-11">
+              <Briefcase className="w-3 h-3" /> Investors
             </a>
           </div>
 
