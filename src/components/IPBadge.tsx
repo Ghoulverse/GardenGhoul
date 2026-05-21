@@ -6,7 +6,7 @@ export default function IPBadge() {
     <section className="relative py-24 md:py-32 px-4 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-[#00f0ff] text-xs font-bold tracking-[0.3em] uppercase mb-3 block">
+          <span className="text-[#22c55e] text-xs font-bold tracking-[0.3em] uppercase mb-3 block">
             Intellectual Property
           </span>
           <h2 className="font-mono text-4xl md:text-5xl text-white mb-4">
@@ -21,11 +21,11 @@ export default function IPBadge() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {/* Main IP Card */}
           <div className="glass-glow rounded-2xl p-8 relative overflow-hidden">
-            <div className="absolute inset-0 opacity-10" style={{ background: 'radial-gradient(circle at top right, #00f0ff, transparent 70%)' }} />
+            <div className="absolute inset-0 opacity-10" style={{ background: 'radial-gradient(circle at top right, #22c55e, transparent 70%)' }} />
             <div className="relative">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-[#00f0ff]/10 border border-[#00f0ff]/30 flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-[#00f0ff]" />
+                <div className="w-12 h-12 rounded-xl bg-[#22c55e]/10 border border-[#22c55e]/30 flex items-center justify-center">
+                  <Shield className="w-6 h-6 text-[#22c55e]" />
                 </div>
                 <div>
                   <p className="font-mono text-sm text-white font-bold">{config.name}</p>
@@ -33,9 +33,13 @@ export default function IPBadge() {
                 </div>
               </div>
               <p className="text-[#94a3b8] text-sm leading-relaxed mb-4">{config.ipStatus}</p>
-              <div className="flex items-center gap-2 text-[#00f0ff] text-xs">
-                <FileCheck className="w-4 h-4" />
-                <span>IP Australia — Class 3 (Cleaning Products)</span>
+              <div className="flex flex-wrap items-center gap-2">
+                {config.ipClasses.map((cls) => (
+                  <div key={cls} className="flex items-center gap-1.5 text-[#22c55e] text-xs bg-[#22c55e]/10 border border-[#22c55e]/20 rounded-full px-3 py-1">
+                    <FileCheck className="w-3.5 h-3.5 shrink-0" />
+                    <span>{cls}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -78,7 +82,7 @@ export default function IPBadge() {
           </div>
           <div className="w-px h-4 bg-white/10" />
           <div className="flex items-center gap-2 text-[#94a3b8] text-xs">
-            <Shield className="w-4 h-4 text-[#00f0ff]" />
+            <Shield className="w-4 h-4 text-[#22c55e]" />
             <span>6 Independent TM Filings</span>
           </div>
         </div>

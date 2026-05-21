@@ -55,6 +55,7 @@ export interface GhoulConfig {
   marketSize: string;
   traction: { label: string; value: string; status: 'complete' | 'in-progress' | 'upcoming' }[];
   ipStatus: string;
+  ipClasses: string[];
   roadmap: { phase: string; title: string; items: string[]; status: 'complete' | 'in-progress' | 'upcoming' }[];
 }
 
@@ -278,7 +279,13 @@ export const config: GhoulConfig = {
     { label: "Trademark", value: "IP Australia — Accepted", status: "complete" },
     { label: "Retail", value: "In Negotiation", status: "in-progress" },
   ],
-  ipStatus: "Trademark accepted — Class 3 (cleaning products). Independent brand filing complete.",
+  ipStatus: "Trademark filed — Class 1 (fertilisers & gardening chemicals), Class 31 (plants & seeds) and Class 7 (garden tools).",
+  ipClasses: [
+    "Class 1 — Fertilisers, chemicals for gardening & horticulture",
+    "Class 31 — Plants, seeds, flowers & gardening produce",
+    "Class 7 — Garden tools, lawn care machines & power equipment",
+    "Class 21 — Gardening implements, pots & planters",
+  ],
   roadmap: [
     { phase: "Phase 1", title: "Brand Launch", items: ["6 sites live", "54 SKUs formulated", "GOO RUNNER game launched"], status: "complete" },
     { phase: "Phase 2", title: "Retail Partnerships", items: ["Bunnings Warehouse", "Flower Power", "Plant Nursery Network"], status: "in-progress" },
