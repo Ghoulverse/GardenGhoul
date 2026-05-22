@@ -226,7 +226,8 @@ export default function GardenMascot() {
   const clickCountRef = useRef(0);
   const typedRef = useRef('');
 
-  const mascotSize = typeof window !== 'undefined' && window.innerWidth < 768 ? 90 : 140;
+  const mascotSize = typeof window !== 'undefined' && window.innerWidth < 768 ? 180 : 280;
+  const cursorRef = useRef({ x, y, isMoving, velocity, mascotSize, overgrowthMode });
 
   const spawnLeaves = useCallback((cx: number, cy: number, count = 25) => {
     for (let i = 0; i < count; i++) {
@@ -318,6 +319,8 @@ export default function GardenMascot() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [x, y, spawnLeaves, addPollenPuff]);
 
+  cursorRef.current = { x, y, isMoving, velocity, mascotSize, overgrowthMode };
+
   // Animation loop
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -335,6 +338,7 @@ export default function GardenMascot() {
     let leafTimer = 0;
 
     const animate = () => {
+      const { x, y, isMoving, velocity, mascotSize, overgrowthMode } = cursorRef.current;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Trail leaves on movement
@@ -476,7 +480,7 @@ export default function GardenMascot() {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener('resize', resize);
     };
-  }, [x, y, isMoving, velocity, mascotSize, overgrowthMode]);
+  }, []);
 
   return (
     <>
@@ -539,7 +543,7 @@ export default function GardenMascot() {
             draggable={false}
             style={{
               filter: isHovered
-                ? 'brightness(1.15) drop-shadow(0 0 20px rgba(34,197,94,0.5)) drop-shadow(0 0 40px rgba(251,191,36,0.3))'
+                ? 'brightness(1.15)'
                 : undefined,
               transition: 'filter 0.3s ease',
             }}

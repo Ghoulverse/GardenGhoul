@@ -11,8 +11,8 @@ export function useGardenCursor(): CursorState {
   const TRAIL_OFFSET = 80;
 
   const [state, setState] = useState<CursorState>({
-    x: typeof window !== 'undefined' ? window.innerWidth / 2 - 70 : 0,
-    y: typeof window !== 'undefined' ? window.innerHeight / 2 - 70 : 0,
+    x: typeof window !== 'undefined' ? window.innerWidth / 2 - 140 : 0,
+    y: typeof window !== 'undefined' ? window.innerHeight / 2 - 140 : 0,
     isMoving: false,
     velocity: 0,
   });
@@ -24,7 +24,7 @@ export function useGardenCursor(): CursorState {
   const rafRef = useRef<number>(0);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    const size = window.innerWidth < 768 ? 90 : 140;
+    const size = window.innerWidth < 768 ? 180 : 280;
     targetRef.current = {
       x: Math.max(10, Math.min(window.innerWidth - size - 10, e.clientX - size / 2 + TRAIL_OFFSET)),
       y: Math.max(10, Math.min(window.innerHeight - size - 10, e.clientY - size / 2 + TRAIL_OFFSET)),
@@ -34,7 +34,7 @@ export function useGardenCursor(): CursorState {
 
   const handleTouchMove = useCallback((e: TouchEvent) => {
     const touch = e.touches[0];
-    const size = window.innerWidth < 768 ? 90 : 140;
+    const size = window.innerWidth < 768 ? 180 : 280;
     targetRef.current = {
       x: Math.max(10, Math.min(window.innerWidth - size - 10, touch.clientX - size / 2 + TRAIL_OFFSET)),
       y: Math.max(10, Math.min(window.innerHeight - size - 10, touch.clientY - size / 2 + TRAIL_OFFSET)),
@@ -47,8 +47,8 @@ export function useGardenCursor(): CursorState {
     const friction = 0.9;
 
     const animate = () => {
-      const dx = (targetRef.current.x + TRAIL_OFFSET) - currentRef.current.x;
-      const dy = (targetRef.current.y + TRAIL_OFFSET) - currentRef.current.y;
+      const dx = targetRef.current.x - currentRef.current.x;
+      const dy = targetRef.current.y - currentRef.current.y;
 
       velocityRef.current.x = (velocityRef.current.x + dx * spring) * friction;
       velocityRef.current.y = (velocityRef.current.y + dy * spring) * friction;
