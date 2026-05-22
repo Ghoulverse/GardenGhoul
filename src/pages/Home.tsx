@@ -7,7 +7,6 @@ import {
   Briefcase, Building2,
 } from 'lucide-react';
 import { config } from '@/data/ghoul.config';
-import GardenMascot from '@/components/GardenMascot';
 import GardenParticles from '@/components/GardenParticles';
 import EcosystemMap from '@/components/EcosystemMap';
 import MarketStats from '@/components/MarketStats';
@@ -177,7 +176,7 @@ export default function Home() {
                   }} />
               ))}
               <div className="absolute inset-0 flex items-center justify-center">
-                <GardenMascot />
+                <img src="/ghoul_mascot.png" alt="GardenGhoul mascot" className="w-full h-full object-contain" draggable={false} style={{ animation: 'ghost-bob 2.5s ease-in-out infinite, ghost-sway 3.5s ease-in-out infinite' }} />
               </div>
             </div>
           </div>
