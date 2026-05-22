@@ -43,7 +43,7 @@ const SPEECH_LINES = [
   "Time to flourish!",
 ];
 
-function GardenGhostSVG({ expression, isHovered }: {
+export function GardenGhostSVG({ expression, isHovered }: {
   expression: number;
   isHovered: boolean;
 }) {
@@ -213,7 +213,7 @@ function GardenGhostSVG({ expression, isHovered }: {
 
 export default function GardenMascot() {
   const { x, y, isMoving, velocity } = useGardenCursor();
-  const [expression, setExpression] = useState(0);
+  const [_expression, setExpression] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [speechBubble, setSpeechBubble] = useState('');
   const [overgrowthMode, setOvergrowthMode] = useState(false);
@@ -532,7 +532,18 @@ export default function GardenMascot() {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <GardenGhostSVG expression={expression} isHovered={isHovered} />
+          <img
+            src="/ghoul_logo.png"
+            alt="GARDEN GHOUL"
+            className="w-full h-full object-contain"
+            draggable={false}
+            style={{
+              filter: isHovered
+                ? 'brightness(1.15) drop-shadow(0 0 20px rgba(34,197,94,0.5)) drop-shadow(0 0 40px rgba(251,191,36,0.3))'
+                : undefined,
+              transition: 'filter 0.3s ease',
+            }}
+          />
         </div>
       </div>
     </>

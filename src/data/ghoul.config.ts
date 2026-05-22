@@ -322,7 +322,7 @@ export const config: GhoulConfig = {
     { label: "GHOULVERSE Game", value: "Live", status: "complete" },
     { label: "Brand Partnerships", value: "Seeking First Deals", status: "upcoming" },
   ],
-  ipStatus: "Trademark filed — Class 1 (fertilisers & gardening chemicals), Class 31 (plants & seeds) and Class 7 (garden tools).",
+  ipStatus: "Trademark classes identified — Class 1 (fertilisers & gardening chemicals), Class 31 (plants & seeds) and Class 7 (garden tools). Filing planned post-funding.",
   ipClasses: [
     "Class 1 — Fertilisers, chemicals for gardening & horticulture",
     "Class 31 — Plants, seeds, flowers & gardening produce",
