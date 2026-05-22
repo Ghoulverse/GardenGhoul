@@ -120,9 +120,7 @@ export default function Home() {
         style={{ background: 'rgba(254,252,232,0.9)', backdropFilter: 'blur(12px)', borderBottom: '1px dashed rgba(34,197,94,0.15)' }}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full border-2 border-dashed border-[#22c55e]/40 flex items-center justify-center">
-              <span className="text-base">{config.icon}</span>
-            </div>
+            <img src="/ghoul_logo.png" alt={config.name} className="w-9 h-9 object-contain" draggable={false} />
             <span className="font-mono text-sm tracking-[0.2em] uppercase text-[#22c55e]">{config.name}</span>
           </div>
           <a href="#ecosystem" className="hidden md:flex items-center gap-1.5 text-[10px] font-bold tracking-[0.2em] uppercase text-[#94a3b8] hover:text-[#22c55e] transition-colors">

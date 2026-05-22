@@ -533,7 +533,7 @@ export default function GardenMascot() {
           onMouseLeave={() => setIsHovered(false)}
         >
           <img
-            src="/ghoul_logo.png"
+            src="/ghoul_mascot.png"
             alt="GARDEN GHOUL"
             className="w-full h-full object-contain"
             draggable={false}
