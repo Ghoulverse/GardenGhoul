@@ -504,7 +504,7 @@ export default function Home() {
             {[Twitter, Instagram, Youtube].map((Icon, i) => {
               const colors = ['#22c55e', '#16a34a', '#84cc16'];
               return (
-                <div key={i} className="w-12 h-12 flex items-center justify-center transition-all hover:scale-110 border-2 border-dashed"
+                <div title="Coming soon" key={i} className="w-12 h-12 flex items-center justify-center transition-all hover:scale-110 border-2 border-dashed"
                   style={{ borderColor: `${colors[i]}20`, background: 'rgba(255,255,240,0.6)' }}
                   onMouseEnter={(e) => { e.currentTarget.style.borderColor = colors[i]; }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = `${colors[i]}20`; }}>
