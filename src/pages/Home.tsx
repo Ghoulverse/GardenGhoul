@@ -436,7 +436,7 @@ export default function Home() {
               style={{ backgroundImage: 'repeating-linear-gradient(90deg, #22c55e20, #22c55e20 4px, transparent 4px, transparent 8px)' }} />
             <Gamepad2 className="w-12 h-12 text-[#22c55e] mx-auto mb-6" />
             <h2 className="font-mono text-4xl md:text-5xl text-[#292524] mb-4">Play GHOULVERSE</h2>
-            <p className="text-[#78716c] max-w-lg mx-auto mb-8">Pilot {config.name} through the Void. Battle bacteria, unlock all 8 ghouls, claim the leaderboard.</p>
+            <p className="text-[#78716c] max-w-lg mx-auto mb-8">Pilot {config.name} through the Void. Race through the Void, unlock every ghoul, claim the leaderboard.</p>
             <a href={config.gameUrl} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-3 font-mono text-xs tracking-wider uppercase text-white transition-all hover:scale-105"
               style={{ background: 'linear-gradient(135deg, #22c55e, #16a34a)', boxShadow: '0 4px 20px rgba(34,197,94,0.25)' }}>

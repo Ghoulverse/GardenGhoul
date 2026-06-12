@@ -69,9 +69,8 @@ export interface GhoulConfig {
 export const config: GhoulConfig = {
   id: "garden",
   name: "GARDEN GHOUL",
-  tagline: "Nature's Cleanup Crew",
-  description:
-    "Where nature grows wild, GARDEN GHOUL tends with precision. From pesticide application to plant hydration.",
+  tagline: "Nature's Consumer Champion",
+  description: "The garden, outdoor, and lawn-care vertical. GARDEN GHOUL balances performance with ecological responsibility.",
   domain: "https://www.gardenghoul.com",
   icon: "🌿",
   isLeader: false,
@@ -278,7 +277,7 @@ export const config: GhoulConfig = {
     },
     {
       id: "scholar",
-      name: "SCHOLAR GHOUL",
+      name: "BOOK GHOUL",
       domain: "https://www.ghoulverse.com/ghouls/scholar/",
       icon: "📚",
       color: "#f97316",
@@ -304,7 +303,7 @@ export const config: GhoulConfig = {
     title: "The Science",
     subtitle: "Organic Ectoplasm™",
     description: "Every GARDEN GHOUL product is powered by Organic Ectoplasm™ — a proprietary bio-enzyme complex derived from beneficial soil microbiota. This technology accelerates natural processes without introducing synthetic chemicals into the ecosystem.",
-    adaptation: "For the Verdant Wilds, we cultivated a soil-native variant that works in harmony with mycorrhizal networks and beneficial bacteria — strengthening the garden's natural defence system while eliminating threats.",
+    adaptation: "For the Verdant Wilds, we cultivate solutions that work in harmony with mycorrhizal networks and beneficial soil life — strengthening the garden's natural defence system while managing pests and weeds.",
     stats: [
       { label: "Organic Certification", value: "ACO" },
       { label: "Pollinator Safety", value: "100%" },
@@ -333,7 +332,7 @@ export const config: GhoulConfig = {
     { phase: "Phase 2", title: "Mascot Creation", items: ["24 professional mascots (2 per ghoul)", "$120K investment across 12 characters"], status: "upcoming" },
     { phase: "Phase 3", title: "Partnerships & Revenue", items: ["Sector sponsorships", "Affiliate deals", "Event appearances", "Influencer recruitment"], status: "upcoming" },
     { phase: "Phase 4", title: "Entertainment Scale", items: ["Animated series pilot", "Convention circuit", "Merchandise licensing"], status: "upcoming" },
-    { phase: "Phase 5", title: "Product Launch", items: ["GOO GHOUL household cleaners", "Vertical-specific product lines"], status: "upcoming" },
+    { phase: "Phase 5", title: "Product Launch", items: ["GOO GHOUL flagship household line", "Vertical-specific owned product lines"], status: "upcoming" },
   ],
 
   fundingAsk: "$250,000 AUD",
@@ -358,6 +357,6 @@ export const config: GhoulConfig = {
     { stream: "Licensing", description: "Character IP licensing to brands", timeline: "Year 2" },
     { stream: "Merchandise", description: "Royalties on plush, apparel, accessories", timeline: "Year 2" },
     { stream: "Animation", description: "YouTube/streaming ad revenue, distribution deals", timeline: "Year 2" },
-    { stream: "Products", description: "Owned product lines (GOO GHOUL cleaners first)", timeline: "Year 3" },
+    { stream: "Products", description: "Owned product lines launched per vertical, starting with GOO GHOUL", timeline: "Year 3" },
   ],
 };
